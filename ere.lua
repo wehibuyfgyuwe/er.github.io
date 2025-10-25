@@ -10,7 +10,7 @@
     To view the source code, see the `src/` folder on the official GitHub repository.
     
     Author: Footagesus (Footages, .ftgs, oftgs)
-    Github: https://github.com/Footagesus/WindUI
+    Github: https://github.com/Footagesus/PulseUtility
     Discord: https://discord.gg/ftgs-development-hub-1300692552005189632
     License: MIT
 ]]
@@ -207,7 +207,7 @@ do
 				if l and l.Window and l.Window.Debug then
 					local v, x = u:find(":%d+: ")
 
-					warn("[ WindUI: DEBUG Mode ] " .. u)
+					warn("[ PulseUtility: DEBUG Mode ] " .. u)
 
 					return l:Notify({
 						Title = "DEBUG Mode: Error",
@@ -323,7 +323,7 @@ do
 					local z = m.GetThemeProperty(x, m.Theme)
 					if z then
 						if typeof(z) == "Color3" then
-							local A = u.Object:FindFirstChild("WindUIGradient")
+							local A = u.Object:FindFirstChild("PulseUtilityGradient")
 							if A then
 								A:Destroy()
 							end
@@ -336,10 +336,10 @@ do
 						elseif type(z) == "table" and z.Color and z.Transparency then
 							u.Object[v] = Color3.new(1, 1, 1)
 
-							local A = u.Object:FindFirstChild("WindUIGradient")
+							local A = u.Object:FindFirstChild("PulseUtilityGradient")
 							if not A then
 								A = Instance.new("UIGradient")
-								A.Name = "WindUIGradient"
+								A.Name = "PulseUtilityGradient"
 								A.Parent = u.Object
 							end
 
@@ -353,7 +353,7 @@ do
 							end
 						end
 					else
-						local A = u.Object:FindFirstChild("WindUIGradient")
+						local A = u.Object:FindFirstChild("PulseUtilityGradient")
 						if A then
 							A:Destroy()
 						end
@@ -688,7 +688,7 @@ do
 				}).IconFrame
 				J.Parent = H
 			elseif string.find(u, "http") then
-				local J = "WindUI/" .. B .. "/Assets/." .. C .. "-" .. v .. ".png"
+				local J = "PulseUtility/" .. B .. "/Assets/." .. C .. "-" .. v .. ".png"
 				local L, M = pcall(function()
 					task.spawn(function()
 						if not isfile(J) then
@@ -704,7 +704,7 @@ do
 				end)
 				if not L then
 					warn(
-						"[ WindUI.Creator ]  '" .. identifyexecutor() .. "' doesnt support the URL Images. Error: " .. M
+						"[ PulseUtility.Creator ]  '" .. identifyexecutor() .. "' doesnt support the URL Images. Error: " .. M
 					)
 
 					H:Destroy()
@@ -1893,10 +1893,10 @@ do
 	function a.h()
 		return [[
 {
-    "name": "windui",
+    "name": "pulseutility",
     "version": "1.6.53",
     "main": "./dist/main.lua",
-    "repository": "https://github.com/Footagesus/WindUI",
+    "repository": "https://github.com/Footagesus/PulseUtility",
     "discord": "https://discord.gg/ftgs-development-hub-1300692552005189632",
     "author": "Footagesus",
     "description": "Roblox UI Library for scripts",
@@ -2336,7 +2336,7 @@ do
 		local af = a.load("j").New
 
 		function aa.new(ag, ah, ai)
-			local aj = a.load("k").Init(nil, ag.WindUI.ScreenGui.KeySystem)
+			local aj = a.load("k").Init(nil, ag.PulseUtility.ScreenGui.KeySystem)
 			local ak = aj.Create(true)
 
 			local al = {}
@@ -2615,7 +2615,7 @@ do
 				})
 
 				for e, g in next, ag.KeySystem.API do
-					local h = ag.WindUI.Services[g.Type]
+					local h = ag.PulseUtility.Services[g.Type]
 					if h then
 						local i = {}
 						for j, l in next, h.Args do
@@ -2701,7 +2701,7 @@ do
 						end)
 						ab.AddSignal(r.MouseButton1Click, function()
 							m.Copy()
-							ag.WindUI:Notify({
+							ag.PulseUtility:Notify({
 								Title = "Key System",
 								Content = "Key link copied to clipboard.",
 								Image = "key",
@@ -2766,7 +2766,7 @@ do
 					if aB then
 						handleSuccess(az)
 					else
-						ag.WindUI:Notify({
+						ag.PulseUtility:Notify({
 							Title = "Key System. Error",
 							Content = aC,
 							Icon = "triangle-alert",
@@ -3101,7 +3101,7 @@ do
 				IconSize = 22,
 			}
 
-			local ag = a.load("k").Init(nil, ae.WindUI.ScreenGui.Popups)
+			local ag = a.load("k").Init(nil, ae.PulseUtility.ScreenGui.Popups)
 			local ah = ag.Create(true)
 
 			local ai = 200
@@ -3117,7 +3117,7 @@ do
 			local ak
 
 			if af.Icon then
-				ak = ab.Image(af.Icon, af.Title .. ":" .. af.Icon, 0, ae.WindUI.Window, "Popup", true, ae.IconThemed)
+				ak = ab.Image(af.Icon, af.Title .. ":" .. af.Icon, 0, ae.PulseUtility.Window, "Popup", true, ae.IconThemed)
 				ak.Size = UDim2.new(0, af.IconSize, 0, af.IconSize)
 				ak.LayoutOrder = -1
 			end
@@ -4060,18 +4060,18 @@ do
 
 		function ac.Init(ad, ae)
 			if not ae.Folder then
-				warn("[ WindUI.ConfigManager ] Window.Folder is not specified.")
+				warn("[ PulseUtility.ConfigManager ] Window.Folder is not specified.")
 				return false
 			end
 
 			ab = ae
 			ac.Folder = ab.Folder
-			ac.Path = "WindUI/" .. tostring(ac.Folder) .. "/config/"
+			ac.Path = "PulseUtility/" .. tostring(ac.Folder) .. "/config/"
 
-			if not isfolder("WindUI/" .. ac.Folder) then
-				makefolder("WindUI/" .. ac.Folder)
-				if not isfolder("WindUI/" .. ac.Folder .. "/config/") then
-					makefolder("WindUI/" .. ac.Folder .. "/config/")
+			if not isfolder("PulseUtility/" .. ac.Folder) then
+				makefolder("PulseUtility/" .. ac.Folder)
+				if not isfolder("PulseUtility/" .. ac.Folder .. "/config/") then
+					makefolder("PulseUtility/" .. ac.Folder .. "/config/")
 				end
 			end
 
@@ -4139,7 +4139,7 @@ do
 				local ah, ai = pcall(function()
 					local ah = readfile
 						or function()
-							warn("[ WindUI.ConfigManager ] The config system doesn't work in the studio.")
+							warn("[ PulseUtility.ConfigManager ] The config system doesn't work in the studio.")
 							return nil
 						end
 					return aa:JSONDecode(ah(af.Path))
@@ -6187,7 +6187,7 @@ do
 				Visible = false,
 				Active = false,
 
-				Parent = al.WindUI.DropdownGui,
+				Parent = al.PulseUtility.DropdownGui,
 				AnchorPoint = Vector2.new(1, 0),
 			}, {
 				am.UIElements.Menu,
@@ -7141,7 +7141,7 @@ workspace.CurrentCamera
 						end
 					end)
 					if not ao then
-						ak.WindUI:Notify({
+						ak.PulseUtility:Notify({
 							Title = "Error",
 							Content = "The " .. an .. " is not copied. Error: " .. ap,
 							Icon = "x",
@@ -7149,7 +7149,7 @@ workspace.CurrentCamera
 						})
 					end
 				end
-			end, ak.WindUI.UIScale, al)
+			end, ak.PulseUtility.UIScale, al)
 
 			function al.SetCode(ao, ap)
 				an.Set(ap)
@@ -8003,7 +8003,7 @@ workspace.CurrentCamera
 
 			local aq = ak.ElementsModule
 
-			aq.Load(al, ap.Content, aq.Elements, ak.Window, ak.WindUI, function()
+			aq.Load(al, ap.Content, aq.Elements, ak.Window, ak.PulseUtility, function()
 				if not al.Expandable then
 					al.Expandable = true
 					an.Visible = true
@@ -8199,7 +8199,7 @@ workspace.CurrentCamera
 						ar.GlobalIndex = #ai.AllElements + 1
 						ar.Parent = ae
 						ar.Window = ai
-						ar.WindUI = aj
+						ar.PulseUtility = aj
 						ar.UIScale = am
 						ar.ElementsModule = al
 						local 
@@ -8295,7 +8295,7 @@ as, at = ap:New(ar)
 
 		function al.Init(am, an, ao, ap)
 			Window = am
-			WindUI = an
+			PulseUtility = an
 			al.ToolTipParent = ao
 			al.TabHighlight = ap
 			return al
@@ -8597,7 +8597,7 @@ as, at = ap:New(ar)
 				ao.UIElements.ContainerFrame,
 				ao.ElementsModule.Elements,
 				Window,
-				WindUI,
+				PulseUtility,
 				nil,
 				ao.ElementsModule,
 				an
@@ -9519,7 +9519,7 @@ as, at = ap:New(ar)
 			end
 
 			if aq.Folder then
-				makefolder("WindUI/" .. aq.Folder)
+				makefolder("PulseUtility/" .. aq.Folder)
 			end
 
 			local as = ai("UICorner", {
@@ -10229,7 +10229,7 @@ as, at = ap:New(ar)
 				aq.UIElements.BackgroundGradient = ag.NewRoundFrame(aq.UICorner, "Squircle", {
 					Size = UDim2.new(1, 0, 1, 0),
 					Parent = aq.UIElements.Main.Background,
-					ImageTransparency = aq.Transparent and ap.WindUI.TransparencyValue or 0,
+					ImageTransparency = aq.Transparent and ap.PulseUtility.TransparencyValue or 0,
 				}, {
 					j,
 				})
@@ -10554,7 +10554,7 @@ as, at = ap:New(ar)
 				aq.BackgroundImageTransparency = math.floor(l + 0.5)
 			end
 			function aq.SetBackgroundTransparency(j, l)
-				WindUI.TransparencyValue = math.floor(tonumber(l) + 0.5)
+				PulseUtility.TransparencyValue = math.floor(tonumber(l) + 0.5)
 				aq:ToggleTransparency(math.floor(tonumber(l) + 0.5) > 0)
 			end
 
@@ -10649,7 +10649,7 @@ as, at = ap:New(ar)
 					aq.Closed = false
 
 					aj(aq.UIElements.Main.Background, 0.2, {
-						ImageTransparency = aq.Transparent and ap.WindUI.TransparencyValue or 0,
+						ImageTransparency = aq.Transparent and ap.PulseUtility.TransparencyValue or 0,
 					}, Enum.EasingStyle.Quint, Enum.EasingDirection.Out):Play()
 
 					if aq.UIElements.BackgroundGradient then
@@ -10781,9 +10781,9 @@ as, at = ap:New(ar)
 
 					aq.Destroyed = true
 					task.wait(0.4)
-					ap.WindUI.ScreenGui:Destroy()
-					ap.WindUI.NotificationGui:Destroy()
-					ap.WindUI.DropdownGui:Destroy()
+					ap.PulseUtility.ScreenGui:Destroy()
+					ap.PulseUtility.NotificationGui:Destroy()
+					ap.PulseUtility.DropdownGui:Destroy()
 				end
 
 				return p
@@ -10801,9 +10801,9 @@ as, at = ap:New(ar)
 
 			function aq.ToggleTransparency(m, p)
 				aq.Transparent = p
-				ap.WindUI.Transparent = p
+				ap.PulseUtility.Transparent = p
 
-				aq.UIElements.Main.Background.ImageTransparency = p and ap.WindUI.TransparencyValue or 0
+				aq.UIElements.Main.Background.ImageTransparency = p and ap.PulseUtility.TransparencyValue or 0
 
 				aq.UIElements.MainBar.Background.ImageTransparency = p and 0.97 or 0.95
 			end
@@ -10846,12 +10846,12 @@ as, at = ap:New(ar)
 			end
 
 			function aq.GetUIScale(m, p)
-				return ap.WindUI.UIScale
+				return ap.PulseUtility.UIScale
 			end
 
 			function aq.SetUIScale(m, p)
-				ap.WindUI.UIScale = p
-				aj(ap.WindUI.ScreenGui.UIScale, 0.2, { Scale = p }, Enum.EasingStyle.Quint, Enum.EasingDirection.Out):Play()
+				ap.PulseUtility.UIScale = p
+				aj(ap.PulseUtility.ScreenGui.UIScale, 0.2, { Scale = p }, Enum.EasingStyle.Quint, Enum.EasingDirection.Out):Play()
 				return aq
 			end
 
@@ -10927,7 +10927,7 @@ as, at = ap:New(ar)
 
 			local m = a.load("S")
 			local p = a.load("T")
-			local r = m.Init(aq, ap.WindUI, ap.Parent.Parent.ToolTips)
+			local r = m.Init(aq, ap.PulseUtility, ap.Parent.Parent.ToolTips)
 			r:OnChange(function(u)
 				aq.CurrentTab = u
 			end)
@@ -10936,7 +10936,7 @@ as, at = ap:New(ar)
 
 			function aq.Tab(u, v)
 				v.Parent = aq.UIElements.SideBar.Frame
-				return r.New(v, ap.WindUI.UIScale)
+				return r.New(v, ap.PulseUtility.UIScale)
 			end
 
 			function aq.SelectTab(u, v)
@@ -10944,7 +10944,7 @@ as, at = ap:New(ar)
 			end
 
 			function aq.Section(u, v)
-				return p.New(v, aq.UIElements.SideBar.Frame, aq.Folder, ap.WindUI.UIScale, aq)
+				return p.New(v, aq.UIElements.SideBar.Frame, aq.Folder, ap.PulseUtility.UIScale, aq)
 			end
 
 			function aq.IsResizable(u, v)
@@ -11103,8 +11103,8 @@ as, at = ap:New(ar)
 
 					wait()
 
-					local Q = H.AbsoluteContentSize.X / ap.WindUI.UIScale
-					local R = J.AbsoluteSize.X / ap.WindUI.UIScale
+					local Q = H.AbsoluteContentSize.X / ap.PulseUtility.UIScale
+					local R = J.AbsoluteSize.X / ap.PulseUtility.UIScale
 
 					if Q > R then
 						H.FillDirection = Enum.FillDirection.Vertical
@@ -11123,7 +11123,7 @@ as, at = ap:New(ar)
 							local U = math.huge
 
 							for V, W in ipairs(L) do
-								local X = W.AbsoluteSize.X / ap.WindUI.UIScale
+								local X = W.AbsoluteSize.X / ap.PulseUtility.UIScale
 								if X < U then
 									U = X
 									T = W
@@ -11397,7 +11397,7 @@ end
 local aq = not forceRefresh and gethui and gethui() or (not forceRefresh and CoreGui or LocalPlayer:WaitForChild("PlayerGui"))
 
 ac.ScreenGui = al("ScreenGui", {
-	Name = "WindUI",
+	Name = "PulseUtility",
 	IgnoreGuiInset = true,
 	ScreenInsets = "None",
 }, {
@@ -11421,13 +11421,13 @@ ac.ScreenGui = al("ScreenGui", {
 ParentUI(ac.ScreenGui)
 
 ac.NotificationGui = al("ScreenGui", {
-	Name = "WindUI/Notifications",
+	Name = "PulseUtility/Notifications",
 	IgnoreGuiInset = true,
 })
 ParentUI(ac.NotificationGui)
 
 ac.DropdownGui = al("ScreenGui", {
-	Name = "WindUI/Dropdowns",
+	Name = "PulseUtility/Dropdowns",
 	IgnoreGuiInset = true,
 })
 ParentUI(ac.DropdownGui)
@@ -11550,7 +11550,7 @@ function ac.Gradient(as, at, av)
 end
 
 function ac.Popup(as, at)
-	at.WindUI = ac
+	at.PulseUtility = ac
 	return a.load("q").new(at)
 end
 
@@ -11564,8 +11564,8 @@ ac:SetLanguage(ak.Language)
 function ac.CreateWindow(as, at)
 	local av = a.load("W")
 
-	if not isfolder("WindUI") then
-		makefolder("WindUI")
+	if not isfolder("PulseUtility") then
+		makefolder("PulseUtility")
 	end
 	if at.Folder then
 		makefolder(at.Folder)
@@ -11573,7 +11573,7 @@ function ac.CreateWindow(as, at)
 		makefolder(at.Title)
 	end
 
-	at.WindUI = ac
+	at.PulseUtility = ac
 	at.Parent = ac.ScreenGui.Window
 
 	if ac.Window then
